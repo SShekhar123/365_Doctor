@@ -1,0 +1,29 @@
+<!-- The PNG image will be added here -->
+<img id="textScreenshot" style='height:750px; width:750px;' />
+
+<center>
+<div id='talltweets' style='height:750px; width:750px;'>Healthy outside will start from inside</div></center>
+<!-- Include the HTMl2Canvas library -->
+<script src="html2canvas.js"></script>
+<style>
+#textScreenshot, #talltweets {
+color:#ffffff; 
+background-color:#1aff00;
+font-weight: bold;
+font-size:50px;
+font-family:Calibri;
+border-style: dotted;
+line-height: 100px; padding-top:50px; 
+}
+</style>
+<script>
+  html2canvas(document.getElementById("talltweets"), {
+    onrendered: function(canvas) {
+      var screenshot = canvas.toDataURL("image/png");
+      document.getElementById("textScreenshot").setAttribute("src", screenshot);
+    }
+  });
+</script>
+
+
+

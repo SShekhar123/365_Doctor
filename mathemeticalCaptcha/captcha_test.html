@@ -1,0 +1,24 @@
+<form action="captcha_check.php" class="js-ajax-php-json" method="post" accept-charset="utf-8">
+<table> 
+  <tr>
+    <td align="left">
+      <label for="captcha">Captcha</label>
+    </td>
+    <td>
+      <input id="txtCaptcha" type="text" name="txtCaptcha" value="" maxlength="10" size="32" />
+    </td>
+    <td> 
+      <img id="imgCaptcha" src="create_image.php" />
+    </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>
+      <input id="btnCaptcha" type="submit" value="Captcha Test" name="btnCaptcha" onclick="getParam(document.frmCaptcha)" />
+      <input id="reload" type="button" value="Reload" name="btnCaptcha" onClick="document.getElementById('imgCaptcha').setAttribute('src', 'create_image.php');" />
+	</td>
+  </tr>
+</table> 
+</form>
+	 
+<div id="result">&nbsp;</div>

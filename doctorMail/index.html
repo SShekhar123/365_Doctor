@@ -1,0 +1,24 @@
+<html>
+  <header>
+  </header>
+  <body>
+    <label> Template Design</label>
+    <div id="mydiv">
+      <label> Good Morning</label>
+      <img src="mug.png" id="img1" height="100" width="100"  />
+    </div><div id="mydiv">
+    <input name="save" type="button" onclick="html2canvas()" value="SAVE" />
+  </body>
+</html>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+html2canvas([document.getElementById('mydiv')], {
+    onrendered: function(canvas) {
+       var data = canvas.toDataURL('image/png');
+    }
+	var a = document.getElementById('mydiv');
+	a.html(data);
+});
+</script>

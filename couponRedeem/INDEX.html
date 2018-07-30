@@ -1,0 +1,79 @@
+<html>
+    <head>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript">
+    $("document").ready(function(){
+      $(".js-ajax-php-json").submit(function(){
+        var data = {
+          "action": "test"
+        };
+        d = $(this).serialize() + "&" + $.param(data);
+        $.ajax({
+          type: "POST",
+          dataType: "json",
+          url: "response.php", 
+          data: d,
+          success: function(data) {
+            var x = 0;
+			var a = $("#amt").text();
+			if(data.coupon && a>500){
+			if(data.coupon>=1){
+			x = data.coupon;
+			a -=data.coupon; }
+			else{
+			x = (a*data.coupon);
+			a -= (a*data.coupon); }
+			$("#cval").val(x);
+			$("#amt").html(a);
+			$('#submit').hide();
+			$('#ip').hide();
+			$(".return").html("Coupon Applied Successfully.");
+			$('#remove').show();
+			}
+			else{
+			$(".return").html("Coupon Invalid!");
+			}
+		  }
+        });
+        return false;
+      });
+	  $(".js-ajax-json").submit(function(){
+			var cv = $("#cval").text();
+			var a = $("#amt").text();
+			a += cv;
+			$("#amt").html(a);
+			$('#ip').show();
+			$('#submit').show();
+			$(".return").html("Coupon Removed.");
+		});
+    });
+    </script>
+    </head>
+    <body>
+	<br><br><br><center> <h1> Redeem System </h1> </center><br><br><br>
+    <form action="response.php" class="js-ajax-php-json" method="post" accept-charset="utf-8">
+	  Amount:<span id="amt">550</span>
+      <br><input type="text" id="ip" name="coupon" value="" placeholder="Coupon" />
+	  <input type="text" id="user" name="user" value="1136" placeholder="Coupon" />
+      <input type="submit" name="submit" id = 'submit' value="Redeem"  />
+    </form>
+	
+	<form class="js-ajax-json">
+	<br><input type="text" id="cval" name="cval" value="" />
+	<input type="submit" name="remove" id = 'remove' value="Remove Coupon"  />
+	</form>
+	
+<style type="text/css">
+	#remove {
+	display: none;
+	}
+	#cval {
+	display: none;
+	}
+	#user {
+	display: none;
+	}
+</style>
+    <div class="return"></div>
+    </body>
+    </html>

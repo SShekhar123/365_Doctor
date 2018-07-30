@@ -1,0 +1,6 @@
+FTP Username: shashank@lawgix.in
+FTP server: ftp.lawgix.in
+FTP & explicit FTPS port:  21
+Password - Shashank@123
+lawgix.in/lawgix.in/shashank
+this will be the path on live
